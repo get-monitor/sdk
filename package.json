@@ -1,0 +1,44 @@
+{
+	"name": "getmonitor",
+	"version": "1.0.0",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/getmonitor/node.git"
+	},
+	"main": "./dist/index.js",
+	"module": "src/index.ts",
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.13",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"description": "An ergonomic SDK to integrate with GetMonitor in your workflow",
+	"engines": {
+		"node": ">=18",
+		"bun": ">=1.0.0"
+	},
+	"files": [
+		"dist"
+	],
+	"maintainers": [
+		{
+			"name": "Almeida",
+			"url": "https://github.com/almeidazs"
+		}
+	],
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"test": "bun test",
+		"biome:check": "biome check --write .",
+		"build": "rm -rf dist && bun run scripts/version.ts && bun biome:check && bun build src/index.ts --outdir dist --target node && bun run types",
+		"types": "bunx tsc --emitDeclarationOnly",
+		"prepublishOnly": "bun run build"
+	},
+	"type": "module",
+	"types": "./dist/index.d.ts"
+}
