@@ -24,7 +24,7 @@ pre-push:
       run: bun run biome:check
     typecheck:
       run: |
-        OUTPUT=$(bun run typecheck 2>&1)
+        OUTPUT=$(bun run types 2>&1)
         STATUS=$?
 
         if [ $STATUS -ne 0 ]; then
